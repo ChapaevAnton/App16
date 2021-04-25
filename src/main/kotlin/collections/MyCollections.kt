@@ -1,5 +1,7 @@
 package collections
 
+import java.util.*
+
 // TODO: 24.04.2021 16.3
 class MyCollections {
 
@@ -79,7 +81,7 @@ fun main() {
     println(map5)
     println(map6)
 
-    val list5 = coll.list.distinct()
+    val list5 = coll.list.distinct().toMutableList()
     println(list5)
 
     println(list4.distinctBy { it.cls })
@@ -90,14 +92,54 @@ fun main() {
 
     println(list6)
 
-    println(listOf(list5, list6).flatten())
-    println(listOf(list5, list6).flatMap {
-        it.reversed()
-    })
+    println("flatten ${listOf(list5, list6).flatten()}")
+    println(
+        "flatMap ${
+            listOf(list5, list6).flatMap {
+                it.shuffled(Random(100))
+            }
+        }"
+    )
 
-    val list7 = mutableListOf(10,11,12)
-    list7.fill(1)
-    println(list7)
+    list5.fill(1)
+    println(list5)
+
+    list5[0] = 2
+    println(list5.any { it == 1 })
+    println(list5.all { it == 1 })
+    list5[7] = -10
+    println(list5.none { it < 0 })
+    println(list5.count { it == 1 })
+    println(list5.contains(-10))
+    println(list5)
+    println(list5.containsAll(listOf(1, 1, -10)))
+
+    val list7 = list5 as List<Int>
+    println(list7.reversed())
+    list5.add(-20)
+    println(list5)
+    println(list7.asReversed())
+
+    list5[5] = 5
+    list5.sort()
+    println(list5)
+    list5.sortDescending()
+    println(list5)
+
+    println(list4.sortedBy { it.str })
+    println(list4.sortedByDescending { it.str })
+
+    println(list7.shuffled())
+    println(list7.shuffled(Random(100)))
+    println(list7.average())
+    println(list7 + list5)
+    println(list7.plus(22))
+    println(list7.minus(listOf(1, 2)))
+    println(list7.minus(1))
+
+    list5.addAll(list7); println(list5)
+    list5.plusAssign(list7); println(list5)
+
 
 
 }
