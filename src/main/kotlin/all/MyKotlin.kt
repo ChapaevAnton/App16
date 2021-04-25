@@ -1,3 +1,5 @@
+package all
+
 const val STR: String = "STR"
 
 
