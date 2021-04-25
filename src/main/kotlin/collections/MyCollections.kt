@@ -78,8 +78,8 @@ fun main() {
     val map5: Map<Int, List<ItemMap>> = list4.groupBy { it.cls }
     val map6: Map<Int, List<ItemMap>> = list4.groupByTo(mutableMapOf()) { it.cls }
 
-    println(map5)
-    println(map6)
+    println("map5 $map5")
+    println("map6 $map6")
 
     val list5 = coll.list.distinct().toMutableList()
     println(list5)
