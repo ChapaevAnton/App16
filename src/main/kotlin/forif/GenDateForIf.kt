@@ -4,12 +4,22 @@ package forif
 
 fun main() {
 
-
+    val array = arrayOf(1, 2, 3, 4, 5, 6)
+    println(array.contentToString())
+    array.forEach { print(it) }
+    println()
+    println(array.toStringArray())
     println(genDate("09.07.1984"))
     println(genDate("01.01.2021"))
     println(genDate("26.04.2021"))
 
 
+}
+
+fun <T> Array<T>.toStringArray(): String {
+    return this.joinToString(prefix = "[", postfix = "]", transform = { item ->
+        item.toString()
+    })
 }
 
 private fun genDate(strDate: String): String? {
